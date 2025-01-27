@@ -11,12 +11,17 @@ namespace CourgeToujoursAPI.Controllers.Subscrible;
 public class SubTypeController : ControllerBase
 {
     private readonly ISubTypeService _subTypeService;
-
-    public SubTypeController(ISubTypeService subTypeService)
+    private readonly IDepotGasapService _depotGasapService;
+    
+    public SubTypeController(ISubTypeService subTypeService,IDepotGasapService depotGasapService)
     {
         _subTypeService = subTypeService;
+        _depotGasapService = depotGasapService;
     }
-
+    
+    //----------------------------------------------------------------------------------------------------//
+    
+    // sub //
     [HttpGet]
     [ProducesResponseType(200, Type = typeof(IEnumerable<SubType>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -27,6 +32,26 @@ public class SubTypeController : ControllerBase
         {
             subs = _subTypeService.GetAll().Select(sub => sub.ToDTO());
             return Ok(subs);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
+    }
+    
+    // Depot // 
+
+    [HttpGet("depotGasap")]
+    [ProducesResponseType(200, Type = typeof(IEnumerable<DepotGasapDTO>))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetAllDepotGasap()
+    {
+        IEnumerable<DepotGasapDTO> depotGasap;
+        try
+        {
+            depotGasap = _depotGasapService.GetAll().Select(depot => depot.toDTO());
+            return Ok(depotGasap);
+
         }
         catch (Exception ex)
         {

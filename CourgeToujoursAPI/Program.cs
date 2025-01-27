@@ -17,12 +17,14 @@ builder.Services.AddTransient<NpgsqlConnection>(service =>
 
 //inject BLL service - Sub
 builder.Services.AddScoped<ISubTypeService, SubTypeService>();
+builder.Services.AddScoped<IDepotGasapService, DepotGasapService>();
 
 
 /*-------------------------------------------------DAL---------------------------------------------------------------*/
 
 //inject DAL - Sub
 builder.Services.AddScoped<ISubTypeRepository, SubTypeRepository>();
+builder.Services.AddScoped<IDepotGasapRepository, DepotGasapRepository>();
 
 
 /*----------------------------------------------------------------------------------------------------------------*/

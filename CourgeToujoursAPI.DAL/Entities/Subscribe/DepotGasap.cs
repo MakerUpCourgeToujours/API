@@ -1,4 +1,4 @@
-﻿namespace CourgeToujoursAPI.DAL.Entities.Abonnement;
+﻿namespace CourgeToujoursAPI.DAL.Entities.Subscribe;
 
 public class DepotGasap
 {
