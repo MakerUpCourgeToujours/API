@@ -12,7 +12,9 @@ public static class DepotGasapMapper
       IdGasap = depotGasap.IdGasap,
       Address = depotGasap.Address,
       DeliveryDay = depotGasap.DeliveryDay,
-      DepotName = depotGasap.DepotName
+      DepotName = depotGasap.DepotName,
+      Frequency = depotGasap.Frequency,
+      Mail = depotGasap.Mail
     };
   }
 
@@ -24,7 +26,9 @@ public static class DepotGasapMapper
       IdGasap = entity.IdGasap,
       Address = entity.Address,
       DeliveryDay = entity.DeliveryDay,
-      DepotName = entity.DepotName
+      DepotName = entity.DepotName,
+      Frequency = entity.Frequency,
+      Mail = entity.Mail
     };
   }
 }

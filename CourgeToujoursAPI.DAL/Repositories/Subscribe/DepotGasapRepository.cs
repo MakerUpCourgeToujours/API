@@ -21,7 +21,9 @@ public class DepotGasapRepository : IDepotGasapRepository
                 ""id_depot_gasap"" AS ""IdGasap"",
                 ""adresse"" AS ""Address"",
                 ""jour_livraison"" AS ""DeliveryDay"",
-                ""nom_depot"" AS ""DepotName"" 
+                ""nom_depot"" AS ""DepotName"" ,
+                ""frequence"" AS ""Frequency"",
+                ""contact"" AS ""Mail""
             FROM ""Depot_gasap""
         ";
         return _connection.Query<DepotGasap>(query);

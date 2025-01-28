@@ -8,4 +8,8 @@ public class DepotGasapDTO
     public string DeliveryDay { get; set; }
     public string DepotName { get; set; }
     
+    public string Frequency { get; set; }
+    
+    public string Mail { get; set; }
+    
 }
