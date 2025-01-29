@@ -1,8 +1,13 @@
-﻿using CourgeToujoursAPI.DAL.Entities.Login;
+﻿
+
+using CourgeToujoursAPI.BLL.Models.login;
+
 
 namespace CourgeToujoursAPI.BLL.Interfaces.login;
 
 public interface IUserService
 {
-    Task<int> CreateUserB2C(User user);
+    UserB2C CreateUserB2C(UserB2C user);
+    
+    UserB2B CreateUserB2B(UserB2B user);
 }

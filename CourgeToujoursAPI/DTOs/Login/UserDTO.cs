@@ -1,6 +1,6 @@
-﻿namespace CourgeToujoursAPI.BLL.Models.login;
+﻿namespace CourgeToujoursAPI.DTOs.Login;
 
-public class User 
+public class UserDTO
 {
     public int IdUser { get; set; }
     public string FirstName { get; set; }
@@ -9,5 +9,4 @@ public class User
     public string Password { get; set; }
     public string phoneNumber { get; set; }
     public bool isAdmin { get; set; }
-    
 }

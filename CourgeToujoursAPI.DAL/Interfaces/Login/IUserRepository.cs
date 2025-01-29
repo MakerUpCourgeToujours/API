@@ -4,6 +4,8 @@ namespace CourgeToujoursAPI.DAL.Interfaces.Login;
 
 public interface IUserRepository
 {
-    Task<int> CreateUserB2C(UserB2C user);
+    UserB2C CreateUserB2C(UserB2C user);
+    
+    UserB2B CreateUserB2B(UserB2B user);
     
 }
