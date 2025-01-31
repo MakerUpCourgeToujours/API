@@ -1,7 +1,7 @@
 ﻿using CourgeToujoursAPI.BLL.Models.login;
 using Entities = CourgeToujoursAPI.DAL.Entities;
 using Models= CourgeToujoursAPI.BLL.Models;
-using UserB2B = CourgeToujoursAPI.DAL.Entities.Login.UserB2B;
+
 
 namespace CourgeToujoursAPI.BLL.Mappers.Login;
 
@@ -45,7 +45,7 @@ public static class UserMapper
       phoneNumber = user.phoneNumber,
       FirstName = user.FirstName,
       LastName = user.LastName,
-      Id_UserB2B = user.Id_UserB2B,
+      
       NameCopany = user.NameCopany,
       typeUserB2B = user.typeUserB2B,
       City = user.City,
@@ -54,6 +54,7 @@ public static class UserMapper
       PostalCode = user.PostalCode,
       DeliveryLimit = user.DeliveryLimit,
       TAVNumber = user.TAVNumber,
+      
 
 
     };
@@ -70,7 +71,7 @@ public static class UserMapper
       phoneNumber = user.phoneNumber,
       FirstName = user.FirstName,
       LastName = user.LastName,
-      Id_UserB2B = user.Id_UserB2B,
+      
       NameCopany = user.NameCopany,
       typeUserB2B = user.typeUserB2B,
       City = user.City,
@@ -80,9 +81,43 @@ public static class UserMapper
       DeliveryLimit = user.DeliveryLimit,
       TAVNumber = user.TAVNumber,
       
+      
     };
 
   }
+
+
+  public static Entities.Login.User toEntitiesUser(this Models.login.User user)
+  {
+    return new Entities.Login.User
+    {
+      IdUser = user.IdUser,
+      Email = user.Email,
+      Password = user.Password,
+      phoneNumber = user.phoneNumber,
+      FirstName = user.FirstName,
+      LastName = user.LastName,
+      isAdmin = user.isAdmin,
+      isB2C = user.isB2c
+    };
+  }
+
+  public static Models.login.User toModelUser(this Entities.Login.User user)
+  {
+    return new Models.login.User
+    {
+      IdUser = user.IdUser,
+      Email = user.Email,
+      Password = user.Password,
+      phoneNumber = user.phoneNumber,
+      FirstName = user.FirstName,
+      LastName = user.LastName,
+      isAdmin = user.isAdmin,
+      isB2c = user.isB2C
+    };
+  }
+ 
+  
   
   
   

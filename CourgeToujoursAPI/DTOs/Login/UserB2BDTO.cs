@@ -1,8 +1,8 @@
-﻿namespace CourgeToujoursAPI.BLL.Models.login;
+﻿namespace CourgeToujoursAPI.DTOs.Login;
 
-public class UserB2B : User
+public class UserB2BDTO: UserDTO
 {
-   
+    
    
     public string NameCopany { get; set; }
    

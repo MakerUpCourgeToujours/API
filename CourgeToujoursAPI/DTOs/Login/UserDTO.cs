@@ -1,4 +1,6 @@
-﻿namespace CourgeToujoursAPI.DTOs.Login;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CourgeToujoursAPI.DTOs.Login;
 
 public class UserDTO
 {
@@ -9,4 +11,14 @@ public class UserDTO
     public string Password { get; set; }
     public string phoneNumber { get; set; }
     public bool isAdmin { get; set; }
+}
+
+
+public class LoginUserDTO
+{
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+    [Required]
+    public string Password { get; set; }
 }

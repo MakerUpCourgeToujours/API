@@ -1,7 +1,7 @@
 ﻿using CourgeToujoursAPI.BLL.Models.login;
 using CourgeToujoursAPI.DTOs.Login;
 
-namespace CourgeToujoursAPI.Mappers;
+namespace CourgeToujoursAPI.Mappers.login;
 
 public static class UserMapper
 {
@@ -31,10 +31,64 @@ public static class UserMapper
         };
 
     }
+
+    public static UserB2BDTO ToDto(this UserB2B user)
+    {
+        return new UserB2BDTO()
+        {
+            IdUser = user.IdUser,
+            Email = user.Email,
+            Password = user.Password,
+            phoneNumber = user.phoneNumber,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            
+            NameCopany = user.NameCopany,
+            typeUserB2B = user.typeUserB2B,
+            City = user.City,
+            NumAdrress = user.NumAdrress,
+            Street = user.Street,
+            PostalCode = user.PostalCode,
+            DeliveryLimit = user.DeliveryLimit,
+            TAVNumber = user.TAVNumber,
+            
+        };
+    }
+    
+    public static UserB2B ToModel(this UserB2BDTO user)
+    {
+        return new UserB2B()
+        {
+            IdUser = user.IdUser,
+            Email = user.Email,
+            Password = user.Password,
+            phoneNumber = user.phoneNumber,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            
+            NameCopany = user.NameCopany,
+            typeUserB2B = user.typeUserB2B,
+            City = user.City,
+            NumAdrress = user.NumAdrress,
+            Street = user.Street,
+            PostalCode = user.PostalCode,
+            DeliveryLimit = user.DeliveryLimit,
+            TAVNumber = user.TAVNumber,
+
+        };
+    }
     
     
     
     
+    public static User ToModelsLogin(this LoginUserDTO user)
+    {
+        return new User
+        {
+            Email = user.Email,
+            Password = user.Password,
+        }; 
+    }
     
     
 }

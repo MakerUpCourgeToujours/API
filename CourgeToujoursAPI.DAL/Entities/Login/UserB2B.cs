@@ -2,7 +2,7 @@
 
 public class UserB2B : User
 {
-   public int Id_UserB2B { get; set; }
+   
    
    public string NameCopany { get; set; }
    
@@ -18,6 +18,6 @@ public class UserB2B : User
    
    public string PostalCode { get; set; }
    
-   public int TAVNumber { get; set; }
+   public string TAVNumber { get; set; }
    
 }

@@ -8,4 +8,6 @@ public interface IUserRepository
     
     UserB2B CreateUserB2B(UserB2B user);
     
+    User GetByEmail(string email);
+    
 }

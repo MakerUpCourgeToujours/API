@@ -10,4 +10,6 @@ public class User
     public string phoneNumber { get; set; }
     public bool isAdmin { get; set; }
     
+    public bool isB2c { get; set; }
+    
 }

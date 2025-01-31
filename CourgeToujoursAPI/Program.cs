@@ -27,6 +27,7 @@ builder.Services.AddTransient<NpgsqlConnection>(service =>
 builder.Services.AddScoped<ISubTypeService, SubTypeService>();
 builder.Services.AddScoped<IDepotGasapService, DepotGasapService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 /*-------------------------------------------------DAL---------------------------------------------------------------*/
