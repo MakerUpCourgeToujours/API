@@ -2,8 +2,9 @@
 using CourgeToujoursAPI.BLL.Interfaces.Subscribe;
 using CourgeToujoursAPI.DAL.Entities.Subscribe;
 using CourgeToujoursAPI.Mappers.Subscrible;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+//[Authorize(Roles = "Admin")]// pour les role dans api //
 namespace CourgeToujoursAPI.Controllers.Subscrible;
 
 [Route("api/[controller]")]

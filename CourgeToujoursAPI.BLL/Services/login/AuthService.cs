@@ -22,10 +22,11 @@ public class AuthService : IAuthService
         
         List<Claim> claims = new List<Claim>()
         {
-            new Claim(ClaimTypes.Name, user.IdUser.ToString()),
+            
+            new Claim(ClaimTypes.NameIdentifier, user.IdUser.ToString()),
             new Claim(ClaimTypes.Name, user.FirstName),
-            new Claim(ClaimTypes.Name, user.LastName),
-            new Claim(ClaimTypes.Name, user.Email),
+            new Claim("lastname", user.LastName),
+            new Claim(ClaimTypes.Email, user.Email),
         };
 
         if (user.isAdmin == true)
@@ -36,7 +37,7 @@ public class AuthService : IAuthService
         {
             claims.Add(new Claim(ClaimTypes.Role, "B2C"));
         }
-        else if (user.isAdmin == false)
+        else if (user.isB2c == false)
         {
             claims.Add(new Claim(ClaimTypes.Role, "B2B"));
         }
