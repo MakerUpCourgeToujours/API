@@ -1,13 +1,17 @@
 using System.Text;
 using CourgeToujoursAPI.BLL.Interfaces.login;
+using CourgeToujoursAPI.BLL.Interfaces.Product;
 using CourgeToujoursAPI.BLL.Interfaces.Subscribe;
 using CourgeToujoursAPI.BLL.Services;
 using CourgeToujoursAPI.BLL.Services.login;
+using CourgeToujoursAPI.BLL.Services.product;
 using CourgeToujoursAPI.BLL.Services.Subscribe;
 using CourgeToujoursAPI.DAL.Interfaces.Login;
+using CourgeToujoursAPI.DAL.Interfaces.Product;
 using CourgeToujoursAPI.DAL.Interfaces.Subscribe;
 using CourgeToujoursAPI.DAL.Repositories;
 using CourgeToujoursAPI.DAL.Repositories.Login;
+using CourgeToujoursAPI.DAL.Repositories.Product;
 using CourgeToujoursAPI.DAL.Repositories.Subscribe;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -91,12 +95,14 @@ builder.Services.AddScoped<ISubTypeService, SubTypeService>();
 builder.Services.AddScoped<IDepotGasapService, DepotGasapService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 /*-------------------------------------------------DAL---------------------------------------------------------------*/
 builder.Services.AddScoped<ISubTypeRepository, SubTypeRepository>();
 builder.Services.AddScoped<IDepotGasapRepository, DepotGasapRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 
 // Dev Mod for front 

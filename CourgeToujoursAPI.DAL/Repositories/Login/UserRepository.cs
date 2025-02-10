@@ -29,17 +29,16 @@ public class UserRepository:IUserRepository
              
           
             string query = @"
-              INSERT INTO ""Utilisateur"" (""nom"" , ""prenom"", ""email"", ""mdp"", ""num_telephone"", ""estAdmin"",""estb2c"")
+              INSERT INTO ""Utilisateur"" (nom , prenom, email, mdp, num_telephone, estAdmin,estb2c)
               VALUES (@FirstName,@LastName,@Email,@Password,@phoneNumber,@isAdmin,@IsB2C)
               RETURNING 
-              ""id_utilisateur"" AS ""IdUser"",
-              ""nom"" AS ""FirstName"",
-              ""prenom"" AS ""LastName"",
-              ""email"" AS ""Email"",
-              ""mdp"" AS ""Password"",
-              ""num_telephone"" AS ""NumTelephone"",
-              ""estAdmin"" AS ""IsAdmin"",
-              ""estb2c"" AS ""IsB2C""
+              id_utilisateur AS ""IdUser"",
+              nom AS ""FirstName"",
+              prenom AS ""LastName"",
+              email AS ""Email"",
+              num_telephone AS ""NumTelephone"",
+              estAdmin AS ""IsAdmin"",
+              estb2c AS ""IsB2C""
               ;
               ";
 
@@ -74,24 +73,23 @@ public class UserRepository:IUserRepository
 
     }
 
+                                                            //B2B//
+    
     public UserB2B CreateUserB2B(UserB2B user)
     {
         try
         {
             string query = @"
-              INSERT INTO ""Utilisateur"" (""nom"" , ""prenom"", ""email"", ""mdp"", ""num_telephone"", ""estAdmin"",""estb2c"")
+              INSERT INTO ""Utilisateur"" (nom , prenom, email, mdp, num_telephone, estAdmin,estb2c)
               VALUES (@FirstName,@LastName,@Email,@Password,@phoneNumber,@isAdmin,@IsB2C)
               RETURNING 
-              ""id_utilisateur"" AS ""IdUser"",
-              ""nom"" AS ""FirstName"",
-              ""prenom"" AS ""LastName"",
-              ""email"" AS ""Email"",
-              ""mdp"" AS ""Password"",
-              ""num_telephone"" AS ""NumTelephone"",
-              ""estAdmin"" AS ""IsAdmin"",
-              ""estb2c"" AS ""IsB2C""
-              ;
-              ";
+              id_utilisateur AS ""IdUser"",
+              nom AS ""FirstName"",
+              prenom AS ""LastName"",
+              email AS ""Email"",
+              num_telephone AS ""NumTelephone"",
+              estAdmin AS ""IsAdmin"",
+              estb2c AS ""IsB2C""; ";
             UserB2C usercreate = _connection.QueryFirstOrDefault<UserB2C>(query, new
             {
                 FirstName = user.FirstName,
