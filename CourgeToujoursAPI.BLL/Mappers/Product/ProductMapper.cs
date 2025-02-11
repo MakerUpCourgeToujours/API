@@ -1,5 +1,6 @@
-﻿using CourgeToujoursAPI.BLL.Models.Product;
+﻿using  CourgeToujoursAPI.BLL.Models.Product;
 using Entities = CourgeToujoursAPI.DAL.Entities;
+using ProductCreate = CourgeToujoursAPI.DAL.Entities.Product.ProductCreate;
 
 namespace CourgeToujoursAPI.BLL.Mappers.Product;
 
@@ -40,6 +41,7 @@ public static class ProductMapper
         };
     }
     
+
     
     
     

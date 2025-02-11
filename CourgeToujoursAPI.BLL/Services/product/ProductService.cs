@@ -31,13 +31,13 @@ public class ProductService : IProductService
         
     }
 
-    public int create(Produit produit)
+    public int create(ProductCreate produit)
     {
-        throw new NotImplementedException();
+         return  _ProductRepository.create(produit.toEntity());
     }
 
-    public bool update(Produit produit)
+    public bool update(ProductCreate produit)
     {
-        throw new NotImplementedException();
+       return _ProductRepository.update(produit.toEntity());
     }
 }

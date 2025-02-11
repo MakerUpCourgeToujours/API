@@ -6,6 +6,6 @@ public interface IProductService
 {
     public IEnumerable<Produit> GetAllProducts();
     public Produit? GetById(int id);
-    public int create(Produit produit);
-    public bool update(Produit produit);
+    public int create(ProductCreate produit);
+    public bool update(ProductCreate produit);
 }
