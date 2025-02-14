@@ -44,7 +44,7 @@ public class ProductController : ControllerBase
         try
         {
             ProductDTO? prod = _ProductService.GetById(id)?.ToDTO();
-            if (prod != default)
+            if (prod != null)
             {
                 return Ok(prod);
             }

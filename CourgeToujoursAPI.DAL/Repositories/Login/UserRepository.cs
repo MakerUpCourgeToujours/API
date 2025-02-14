@@ -73,8 +73,98 @@ public class UserRepository:IUserRepository
 
     }
 
-                                                            //B2B//
+    public IEnumerable<UserB2C> GetAllUSerB2C()
+    {
+            string query = @"
+
+                SELECT u.id_utilisateur AS ""IdUser"",
+                       u.nom AS ""FirstName"",
+                       u.prenom AS ""LastName"",
+                       u.email AS ""Email"" ,
+                       u.num_telephone AS ""phoneNumber"",
+                       p.id_abonnement AS ""idAbonement""
+                FROM ""Utilisateur"" u
+                JOIN ""Mangeur_B2C"" p
+                ON u.""id_utilisateur"" = p.""utilisateur_id"";";
+            
+            return _connection.Query<UserB2C>(query);
+
+
+    }
     
+    public UserB2C? GetUSERB2CById(int id)
+    {
+        string query = @"
+                SELECT u.id_utilisateur AS ""IdUser"",
+                       u.nom AS ""FirstName"",
+                       u.prenom AS ""LastName"",
+                       u.email AS ""Email"" ,
+                       u.num_telephone AS ""phoneNumber"",
+                       p.id_abonnement AS ""idAbonement""
+                FROM ""Utilisateur"" u
+                JOIN ""Mangeur_B2C"" p
+                ON u.""id_utilisateur"" = p.""utilisateur_id""
+                WHERE u.id_utilisateur= @idUser;";
+        
+        return _connection.QueryFirstOrDefault<UserB2C>(query, new { idUser = id });
+    }
+
+
+  
+
+    //B2B//
+    
+    public IEnumerable<UserB2B> GetAllUSerB2B()
+    {
+        string query = @"
+            SELECT 
+                    u.id_utilisateur AS ""IdUser"",
+                    u.nom AS ""FirstName"",
+                    u.prenom AS ""LastName"",
+                    u.email AS ""Email"" ,
+                    u.num_telephone AS ""phoneNumber"",
+                  
+                   p.nom_partenaire_b2b AS ""NameCopany"",
+                   p.type_partenaire AS ""typeUserB2B"",
+                   p.seuil_livraison AS ""DeliveryLimit"",
+                   p.numero_adresse AS ""NumAdrress"",
+                   p.rue_adresse AS ""Street"",
+                   p.ville_adresse AS ""City"",
+                   p.code_postal_adresse AS ""PostalCode"",
+                   p.numerodetva AS ""TAVNumber""
+            FROM ""Utilisateur"" u
+            JOIN ""Partenaire_B2B"" p
+            ON u.""id_utilisateur"" = p.""utilisateur_id"";";
+        return _connection.Query<UserB2B>(query);
+    }
+
+ 
+    public UserB2B? GetUSERB2BById(int id)
+    {
+        string query = @"
+            SELECT 
+                    u.id_utilisateur AS ""IdUser"",
+                    u.nom AS ""FirstName"",
+                    u.prenom AS ""LastName"",
+                    u.email AS ""Email"" ,
+                    u.num_telephone AS ""phoneNumber"",
+                  
+                   p.nom_partenaire_b2b AS ""NameCopany"",
+                   p.type_partenaire AS ""typeUserB2B"",
+                   p.seuil_livraison AS ""DeliveryLimit"",
+                   p.numero_adresse AS ""NumAdrress"",
+                   p.rue_adresse AS ""Street"",
+                   p.ville_adresse AS ""City"",
+                   p.code_postal_adresse AS ""PostalCode"",
+                   p.numerodetva AS ""TAVNumber""
+            FROM ""Utilisateur"" u
+            JOIN ""Partenaire_B2B"" p
+            ON u.""id_utilisateur"" = p.""utilisateur_id""
+            WHERE u.id_utilisateur= @idUser;";
+        
+        return _connection.QueryFirstOrDefault<UserB2B>(query, new { idUser = id });
+    }
+
     public UserB2B CreateUserB2B(UserB2B user)
     {
         try

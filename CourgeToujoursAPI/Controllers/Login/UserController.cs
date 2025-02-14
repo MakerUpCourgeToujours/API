@@ -3,6 +3,7 @@ using CourgeToujoursAPI.BLL.Interfaces.login;
 using CourgeToujoursAPI.BLL.Models.login;
 using CourgeToujoursAPI.DTOs.Login;
 using CourgeToujoursAPI.Mappers.login;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourgeToujoursAPI.Controllers.Login;
@@ -22,6 +23,95 @@ public class UserController : ControllerBase
     
     
     //------------------------------------------------------------
+    
+    //GETALL USER B2C//
+
+    [HttpGet("GetAllUsersB2C")]
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetAllUsersB2C()
+    {
+        IEnumerable<UserB2CDTO> users;
+        try
+        {
+            users = _userService.GetAllUSerB2C().Select(u => u.toDTO());
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+    
+    //GETALL USER B2B//
+
+    [HttpGet("GetAllUsersB2B")]
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetAllUsersB2B()
+    {
+        IEnumerable<UserB2BDTO> users;
+        try
+        {
+            users = _userService.GetAllUSerB2B().Select(u => u.ToDto());
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+    
+    //GET BY ID B2B//
+    [HttpGet("GetByIdB2B/{id:int}")]
+    
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetByIdB2B(int id)
+    {
+        try
+        {
+                UserB2BDTO user = _userService.GetUSERB2BById(id).ToDto();
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                
+                return NotFound("l'utilsateur n'existe pas");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+    
+    //GET BY ID B2C //
+    [HttpGet("GetByIdB2C/{id:int}")]
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "B2C")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetByIdB2C(int id)
+    {
+        try
+        {
+            UserB2CDTO user = _userService.GetUSERB2CById(id).toDTO();
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            
+            return NotFound("l'utilsateur n'existe pas");
+            
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
     
     
     //CREATE USER B2C//

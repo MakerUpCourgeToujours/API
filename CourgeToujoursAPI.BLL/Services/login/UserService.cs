@@ -44,6 +44,26 @@ public class UserService : IUserService
        return  _userRepository.CreateUserB2C(user.toEntities()).toModel();
     }
 
+    public IEnumerable<UserB2C> GetAllUSerB2C()
+    {
+        return _userRepository.GetAllUSerB2C().Select(u => u.toModel());
+    }
+
+    public IEnumerable<UserB2B> GetAllUSerB2B()
+    {
+        return _userRepository.GetAllUSerB2B().Select(u => u.toModel());
+    }
+
+    public UserB2C? GetUSERB2CById(int id)
+    {
+        return _userRepository.GetUSERB2CById(id)?.toModel();
+    }
+
+    public UserB2B? GetUSERB2BById(int id)
+    {
+        return _userRepository.GetUSERB2BById(id)?.toModel();
+    }
+
     public Models.login.UserB2B CreateUserB2B(Models.login.UserB2B user)
     {
         if (string.IsNullOrEmpty(user.Email))
